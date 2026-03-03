@@ -1,0 +1,16 @@
+# Fichier de configuration vital pour le déploiement Netlify
+
+[build]
+  # Commande exécutée par Netlify pour compiler l'application
+  command = "npm run build"
+  # Dossier généré par Vite contenant les fichiers statiques de production
+  publish = "dist"
+
+# Règle vitale pour les Single Page Applications (SPA) React
+# Redirige toutes les requêtes vers index.html pour éviter les erreurs 404
+# lors du rechargement de la page ou de l'accès direct à une URL spécifique
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
