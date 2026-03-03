@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optionnel : adoucit le scroll sur toute la page */
+html {
+  scroll-behavior: smooth;
+}
+
