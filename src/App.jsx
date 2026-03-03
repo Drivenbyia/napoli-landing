@@ -50,7 +50,7 @@ export default function App() {
 
       <main className={`pt-32 md:pt-40 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-1000 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         
-        {/* HERO TITLES */}
+        {/* HERO TITLES & CTA */}
         <div className="text-center max-w-4xl mx-auto mb-20 md:mb-28">
            <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.15] text-[#4A5D4E]">
               {isVetMode ? (
@@ -65,17 +65,46 @@ export default function App() {
                 : "La première application de santé prédictive qui transforme les recommandations vétérinaires en une routine quotidienne simple, visuelle et motivante."
               }
             </p>
-            <button className="bg-[#4A5D4E] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#8A9A86] hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-[#4A5D4E]/20 flex items-center gap-2 mx-auto">
+            
+            <button className="bg-[#4A5D4E] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#8A9A86] hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-[#4A5D4E]/20 flex items-center gap-2 mx-auto mb-8">
               {isVetMode ? "Découvrir l'Espace Clinique" : "Rejoindre la liste d'attente"}
               <ChevronRight className="w-5 h-5" />
             </button>
+
+            {/* --- NOUVEAU BLOC : SOCIAL PROOF --- */}
+            <div className="flex flex-col items-center justify-center gap-2 opacity-90 transition-opacity duration-500">
+              {!isVetMode ? (
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  {/* Avatars */}
+                  <div className="flex -space-x-3">
+                    <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#8A9A86]/20 flex items-center justify-center text-sm shadow-sm">🐶</div>
+                    <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#B5A397]/20 flex items-center justify-center text-sm shadow-sm z-10">🐕</div>
+                    <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#E27D60]/20 flex items-center justify-center text-sm shadow-sm z-20">🦮</div>
+                    <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#4A5D4E]/10 flex items-center justify-center text-sm shadow-sm z-30">🐩</div>
+                  </div>
+                  {/* Texte Social Proof B2C */}
+                  <div className="text-sm font-bold text-[#4A5D4E]/80 text-center sm:text-left">
+                    <span className="text-[#E27D60] tracking-widest text-base">★★★★★</span><br/>
+                    Rejoint par +500 maîtres passionnés
+                  </div>
+                </div>
+              ) : (
+                /* Texte Social Proof B2B */
+                <div className="text-sm font-bold text-[#4A5D4E]/80 text-center">
+                  <span className="text-[#E27D60] tracking-widest text-base mb-1 block">★★★★★</span>
+                  Déjà 50+ cliniques partenaires
+                </div>
+              )}
+            </div>
+            {/* --------------------------------- */}
+
         </div>
 
         {/* --- BENTO GRID: B2C (MAÎTRE) --- */}
         {!isVetMode && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
             
-            {/* Bento 1: Harmony Rings (Large) - Spans 2 cols */}
+            {/* Bento 1: Harmony Rings */}
             <div className="lg:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col md:flex-row items-center gap-10 relative overflow-hidden group hover:shadow-lg transition-shadow duration-500">
               <div className="flex-1 z-10 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#8A9A86]/10 text-[#8A9A86] text-xs font-bold uppercase tracking-wider mb-5">Vue d'ensemble</div>
@@ -85,7 +114,6 @@ export default function App() {
                 </p>
               </div>
               <div className="flex-1 flex justify-center z-10 w-full">
-                {/* Simulated SVG Rings */}
                 <div className="relative w-56 h-56 bg-[#FAF9F6] rounded-full flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-700">
                    <div className="absolute w-48 h-48 rounded-full border-[14px] border-[#8A9A86] border-t-transparent rotate-45 transition-all duration-1000 ease-out"></div>
                    <div className="absolute w-32 h-32 rounded-full border-[14px] border-[#B5A397] border-l-transparent rotate-12 transition-all duration-1000 delay-100 ease-out"></div>
@@ -96,7 +124,7 @@ export default function App() {
               <div className="absolute top-0 right-0 w-80 h-80 bg-[#8A9A86]/5 rounded-full blur-3xl group-hover:bg-[#8A9A86]/10 transition-colors duration-700"></div>
             </div>
 
-            {/* Bento 2: Scan & Nutrition - Spans 1 col */}
+            {/* Bento 2: Scan & Nutrition */}
             <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 relative overflow-hidden flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500">
               <div>
                 <div className="w-14 h-14 bg-[#B5A397]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#B5A397]/20 transition-colors">
@@ -112,7 +140,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Bento 3: Gamification - Spans 1 col */}
+            {/* Bento 3: Gamification */}
             <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 relative overflow-hidden flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500">
               <div>
                 <div className="w-14 h-14 bg-[#8A9A86]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#8A9A86]/20 transition-colors">
@@ -132,7 +160,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Bento 4: SOS & Toxiques - Spans 2 cols */}
+            {/* Bento 4: SOS & Toxiques */}
             <div className="lg:col-span-2 bg-[#E27D60] text-white rounded-[2.5rem] p-8 md:p-10 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-10 hover:shadow-xl transition-shadow duration-500">
               <div className="flex-1 z-10 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider mb-5">Urgence</div>
@@ -149,7 +177,6 @@ export default function App() {
                 </button>
               </div>
               
-              {/* Background Decoration */}
               <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
               <div className="absolute -top-24 -left-24 w-64 h-64 bg-black/5 rounded-full blur-3xl"></div>
             </div>
@@ -237,9 +264,22 @@ export default function App() {
 
           </div>
         )}
+
+        {/* --- NOUVEAU BLOC : POURQUOI NAPOLI ? (MISSION STATEMENT) --- */}
+        <section className="mt-20 md:mt-28 bg-[#8A9A86]/5 rounded-[3rem] py-20 px-6 md:px-12 text-center border border-[#8A9A86]/10 shadow-sm">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-8">
+              Pourquoi Napoli ? 🐾
+            </h2>
+            <p className="text-lg md:text-xl text-[#4A5D4E]/80 leading-relaxed font-medium">
+              Napoli n'est pas née dans la Silicon Valley. Elle est née d'une frustration : celle de naviguer à l'aveugle avec la santé de notre meilleur ami. Entre les tableaux Excel illisibles et les informations contradictoires sur internet, il manquait un outil. Un outil aussi précis que l'esprit d'un vétérinaire, et aussi simple qu'un jeu d'enfant. Napoli, c'est le chaînon manquant pour leur offrir la vie la plus longue et la plus saine possible.
+            </p>
+          </div>
+        </section>
+        {/* ------------------------------------------------------------- */}
+
       </main>
     </div>
   );
 }
-
 
