@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ShieldAlert, Activity, Phone, Flame, ChevronRight, Award, 
-  ScanLine, MapPin, Pill, CalendarCheck, HeartPulse
+  ScanLine, MapPin, Pill, CalendarCheck, HeartPulse, CheckCircle
 } from 'lucide-react';
 
 // --- DESIGN SYSTEM NAPOLI ---
@@ -20,7 +20,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-[#4A5D4E] font-sans selection:bg-[#8A9A86] selection:text-white transition-colors duration-500 overflow-x-hidden">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#4A5D4E] font-sans selection:bg-[#8A9A86] selection:text-white transition-colors duration-500 overflow-x-hidden flex flex-col">
       
       {/* FLOATING HEADER & TOGGLE */}
       <header className="fixed top-0 inset-x-0 z-50 px-4 py-4 md:py-6 flex justify-center pointer-events-none">
@@ -48,7 +48,8 @@ export default function App() {
         </div>
       </header>
 
-      <main className={`pt-32 md:pt-40 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-1000 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      {/* MAIN CONTENT */}
+      <main className={`flex-grow pt-32 md:pt-40 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-1000 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         
         {/* HERO TITLES & CTA */}
         <div className="text-center max-w-4xl mx-auto mb-20 md:mb-28">
@@ -71,39 +72,33 @@ export default function App() {
               <ChevronRight className="w-5 h-5" />
             </button>
 
-            {/* --- NOUVEAU BLOC : SOCIAL PROOF --- */}
+            {/* SOCIAL PROOF */}
             <div className="flex flex-col items-center justify-center gap-2 opacity-90 transition-opacity duration-500">
               {!isVetMode ? (
                 <div className="flex flex-col sm:flex-row items-center gap-4">
-                  {/* Avatars */}
                   <div className="flex -space-x-3">
                     <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#8A9A86]/20 flex items-center justify-center text-sm shadow-sm">🐶</div>
                     <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#B5A397]/20 flex items-center justify-center text-sm shadow-sm z-10">🐕</div>
                     <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#E27D60]/20 flex items-center justify-center text-sm shadow-sm z-20">🦮</div>
                     <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#4A5D4E]/10 flex items-center justify-center text-sm shadow-sm z-30">🐩</div>
                   </div>
-                  {/* Texte Social Proof B2C */}
                   <div className="text-sm font-bold text-[#4A5D4E]/80 text-center sm:text-left">
                     <span className="text-[#E27D60] tracking-widest text-base">★★★★★</span><br/>
                     Rejoint par +500 maîtres passionnés
                   </div>
                 </div>
               ) : (
-                /* Texte Social Proof B2B */
                 <div className="text-sm font-bold text-[#4A5D4E]/80 text-center">
                   <span className="text-[#E27D60] tracking-widest text-base mb-1 block">★★★★★</span>
                   Déjà 50+ cliniques partenaires
                 </div>
               )}
             </div>
-            {/* --------------------------------- */}
-
         </div>
 
         {/* --- BENTO GRID: B2C (MAÎTRE) --- */}
         {!isVetMode && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-            
             {/* Bento 1: Harmony Rings */}
             <div className="lg:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col md:flex-row items-center gap-10 relative overflow-hidden group hover:shadow-lg transition-shadow duration-500">
               <div className="flex-1 z-10 text-center md:text-left">
@@ -176,7 +171,6 @@ export default function App() {
                   <Phone className="w-6 h-6" /> Urgence Vétérinaire
                 </button>
               </div>
-              
               <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
               <div className="absolute -top-24 -left-24 w-64 h-64 bg-black/5 rounded-full blur-3xl"></div>
             </div>
@@ -186,7 +180,6 @@ export default function App() {
         {/* --- BENTO GRID: B2B (VÉTÉRINAIRE) --- */}
         {isVetMode && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr">
-            
             {/* B2B Bento 1: Smart Split / Prise de RDV */}
             <div className="md:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-[#8A9A86]/10 flex flex-col md:flex-row items-center gap-12 group hover:shadow-lg transition-shadow duration-500">
               <div className="flex-1">
@@ -261,11 +254,10 @@ export default function App() {
                 </div>
               </div>
             </div>
-
           </div>
         )}
 
-        {/* --- NOUVEAU BLOC : POURQUOI NAPOLI ? (MISSION STATEMENT) --- */}
+        {/* --- MISSION STATEMENT : POURQUOI NAPOLI ? --- */}
         <section className="mt-20 md:mt-28 bg-[#8A9A86]/5 rounded-[3rem] py-20 px-6 md:px-12 text-center border border-[#8A9A86]/10 shadow-sm">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-8">
@@ -276,10 +268,180 @@ export default function App() {
             </p>
           </div>
         </section>
-        {/* ------------------------------------------------------------- */}
+
+        {/* --- BLOC : TARIFS --- */}
+        <section className="mt-20 md:mt-28 mb-10 text-center">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-[#8A9A86]/10 text-[#8A9A86] font-bold text-sm mb-6 uppercase tracking-wider">
+            Offert pendant la Bêta
+          </div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-12">
+            Un investissement transparent.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+            {!isVetMode ? (
+              <>
+                <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-2xl font-bold mb-2">Essentiel</h3>
+                  <div className="text-4xl font-extrabold text-[#4A5D4E] mb-6">0€</div>
+                  <ul className="space-y-4 mb-8 flex-1">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Carnet de santé complet</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Suivi de poids régulier</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Annuaire vétérinaire & SOS</span>
+                    </li>
+                  </ul>
+                  <button className="w-full bg-[#FAF9F6] text-[#4A5D4E] py-4 rounded-2xl font-bold border border-black/5 hover:bg-[#E3E8E3] transition-colors">Commencer</button>
+                </div>
+
+                <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-md border-2 border-[#8A9A86] flex flex-col relative transform md:-translate-y-4">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#8A9A86] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Le plus choisi</div>
+                  <h3 className="text-2xl font-bold mb-2">Napoli Care+</h3>
+                  <div className="mb-2">
+                    <span className="text-xl text-gray-400 line-through font-medium mr-3">49,99€ / an</span>
+                    <span className="text-4xl font-extrabold text-[#8A9A86]">0€ <span className="text-lg font-bold">aujourd'hui</span></span>
+                  </div>
+                  <p className="text-sm text-[#4A5D4E]/60 font-medium mb-8">Soit ~4€/mois. Le prix d'un café pour allonger l'espérance de vie de son chien.</p>
+                  <ul className="space-y-4 mb-8 flex-1">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Algorithme nutritionnel sur-mesure</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Scan toxique & ingrédients illimité</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Trophées & Gamification (Dopamine)</span>
+                    </li>
+                  </ul>
+                  <button className="w-full bg-[#8A9A86] text-white py-4 rounded-2xl font-bold hover:bg-[#4A5D4E] transition-colors shadow-lg shadow-[#8A9A86]/20">Débloquer Care+</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-2xl font-bold mb-2">Clinique Référencée</h3>
+                  <div className="text-4xl font-extrabold text-[#4A5D4E] mb-6">0€</div>
+                  <ul className="space-y-4 mb-8 flex-1">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Présence dans l'annuaire GPS</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Visibilité locale accrue</span>
+                    </li>
+                  </ul>
+                  <button className="w-full bg-[#FAF9F6] text-[#4A5D4E] py-4 rounded-2xl font-bold border border-black/5 hover:bg-[#E3E8E3] transition-colors">Référencer ma clinique</button>
+                </div>
+
+                <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-md border-2 border-[#8A9A86] flex flex-col relative transform md:-translate-y-4">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#8A9A86] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Partenaire Actif</div>
+                  <h3 className="text-2xl font-bold mb-2">Board Médical / Partenaire</h3>
+                  <div className="mb-2">
+                    <span className="text-xl text-gray-400 line-through font-medium mr-3">59€ / mois</span>
+                    <span className="text-4xl font-extrabold text-[#8A9A86]">0€ <span className="text-lg font-bold">aujourd'hui</span></span>
+                  </div>
+                  <p className="text-sm text-[#4A5D4E]/60 font-medium mb-8">Accès complet aux outils de suivi thérapeutique pendant toute la durée de la bêta.</p>
+                  <ul className="space-y-4 mb-8 flex-1">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Dashboard d'observance des patients</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Module de Surcharge Calorique Manuelle</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
+                      <span className="font-medium text-[#4A5D4E]/80">Tag NFC de prescription pour le bureau</span>
+                    </li>
+                  </ul>
+                  <button className="w-full bg-[#8A9A86] text-white py-4 rounded-2xl font-bold hover:bg-[#4A5D4E] transition-colors shadow-lg shadow-[#8A9A86]/20">Rejoindre le Board</button>
+                </div>
+              </>
+            )}
+          </div>
+        </section>
+
+        {/* --- NOUVEAU BLOC : FAQ DYNAMIQUE --- */}
+        <section className="mt-24 mb-10 max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-10 text-center">
+            Vos questions, nos réponses
+          </h2>
+          <div className="space-y-4">
+            {!isVetMode ? (
+              <>
+                <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-2xl p-6 md:p-8 shadow-sm">
+                  <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">L'application Napoli est-elle gratuite ?</h4>
+                  <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Oui ! Le carnet de santé, le suivi de poids et l'annuaire vétérinaire seront toujours gratuits. Pour le Calculateur de macros et la Gamification, nous proposerons plus tard l'abonnement Napoli Care+.</p>
+                </div>
+                <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-2xl p-6 md:p-8 shadow-sm">
+                  <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">Mon vétérinaire n'utilise pas Napoli. Puis-je quand même l'utiliser ?</h4>
+                  <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Absolument. L'application est autonome. Vous pourrez générer un "Rapport de Santé" PDF en un clic pour votre vétérinaire lors de vos consultations.</p>
+                </div>
+                <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-2xl p-6 md:p-8 shadow-sm">
+                  <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">Comment calculez-vous les rations et calories ?</h4>
+                  <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Nos algorithmes utilisent les directives cliniques strictes (NRC) et se basent sur les données d'OpenFoodFacts, parfaitement ajustés selon l'âge, la race et l'activité de votre chien.</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-2xl p-6 md:p-8 shadow-sm">
+                  <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">Cela va-t-il me rajouter du travail en consultation ?</h4>
+                  <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Au contraire. La prescription prend 10 secondes (via un tag NFC sur votre bureau). C'est le maître qui fait le travail à la maison. Vous ne faites que consulter le dashboard de suivi.</p>
+                </div>
+                <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-2xl p-6 md:p-8 shadow-sm">
+                  <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">Faut-il changer de logiciel de prise de rendez-vous ?</h4>
+                  <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Non. Napoli intègre un "Smart Split" (WebView). Si vous utilisez Doctolib ou CaptainVet, vos clients réserveront via ces plateformes directement depuis l'application Napoli.</p>
+                </div>
+                <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-2xl p-6 md:p-8 shadow-sm">
+                  <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">Napoli est-elle conforme au RGPD ?</h4>
+                  <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Totalement. Les données de santé animales et humaines sont strictement anonymisées, cryptées et hébergées sur des serveurs sécurisés en Europe.</p>
+                </div>
+              </>
+            )}
+          </div>
+        </section>
 
       </main>
+
+      {/* --- NOUVEAU BLOC : FOOTER --- */}
+      <footer className="bg-[#2C302E] text-white pt-16 pb-8 px-6 md:px-12 mt-10 rounded-t-[3rem] md:rounded-t-[4rem]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-center md:text-left">
+          
+          <div>
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Napoli 🐾</h2>
+            <p className="text-white/60 text-sm md:text-base font-medium max-w-xs">
+              L'application de santé prédictive qui prolonge leur espérance de vie.
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm md:text-base font-bold text-white/80">
+            <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
+            <a href="#" className="hover:text-white transition-colors">Contact</a>
+            <a href="#" className="hover:text-white transition-colors">Espace Presse</a>
+          </div>
+
+        </div>
+        
+        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-xs md:text-sm font-medium flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© {new Date().getFullYear()} Napoli App. Tous droits réservés.</p>
+          <p>Fait avec ❤️ pour nos chiens.</p>
+        </div>
+      </footer>
+
     </div>
   );
 }
+
 
