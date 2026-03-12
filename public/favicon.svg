@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#8A9A86"/>
+  <!-- Patte de chien -->
+  <ellipse cx="16" cy="19" rx="5" ry="4.5" fill="white"/>
+  <ellipse cx="11" cy="15" rx="2.5" ry="3" fill="white"/>
+  <ellipse cx="21" cy="15" rx="2.5" ry="3" fill="white"/>
+  <ellipse cx="13" cy="11" rx="2" ry="2.5" fill="white"/>
+  <ellipse cx="19" cy="11" rx="2" ry="2.5" fill="white"/>
+</svg>

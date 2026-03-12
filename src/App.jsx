@@ -459,9 +459,9 @@ export default function App() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm md:text-base font-bold text-white/80">
-            <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
-            <a href="#" className="hover:text-white transition-colors">Espace Presse</a>
+            <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a>
+            <a href="mailto:hello@napolicare.com" className="hover:text-white transition-colors">Contact</a>
+            <a href="mailto:presse@napolicare.com" className="hover:text-white transition-colors">Espace Presse</a>
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-xs md:text-sm font-medium flex flex-col md:flex-row justify-between items-center gap-4">
