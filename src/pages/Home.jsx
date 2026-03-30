@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ShieldAlert, Phone, Flame, ChevronRight,
+  ShieldAlert, Phone, Flame, Bell,
   CheckCircle
 } from 'lucide-react';
+import StickyNav from '../components/StickyNav';
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,7 +36,7 @@ export default function Home() {
       </header>
 
       {/* ── MAIN CONTENT ── */}
-      <main className={`flex-grow pt-24 md:pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full transition-all duration-1000 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <main className={`flex-grow pt-24 md:pt-28 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full transition-all duration-1000 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
         {/* ── HERO ── */}
         <section
@@ -49,34 +50,42 @@ export default function Home() {
             {/* Colonne gauche */}
             <div className="flex-1 text-center lg:text-left">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-[#4A5D4E]">
-                L'amour n'est pas une <span className="text-[#8A9A86]">science exacte.</span> Sa santé, si.
+                L'amour n'est pas une <span className="text-sage">science</span> exacte. Sa santé, si.
               </h1>
               <p className="text-lg md:text-xl text-[#4A5D4E]/70 mb-8 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Le premier carnet de santé prédictif qui transforme les recommandations vétérinaires en une routine quotidienne simple, visuelle et motivante.
               </p>
 
-              {/* Formulaire Netlify — Lead Magnet */}
-              <form
-                name="b2c-leads"
-                method="POST"
-                data-netlify="true"
-                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0 mb-8"
-              >
-                <input type="hidden" name="form-name" value="b2c-leads" />
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Votre adresse email..."
-                  className="flex-1 px-4 py-3 rounded-xl border border-[#8A9A86]/30 bg-white/80 focus:outline-none focus:border-[#8A9A86] focus:ring-2 focus:ring-[#8A9A86]/20 text-[#4A5D4E] placeholder-[#4A5D4E]/40 font-medium"
-                />
+              {/* Badges App Store & Google Play */}
+              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0 mb-8">
+                {/* App Store */}
                 <button
-                  type="submit"
-                  className="bg-[#4A5D4E] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#8A9A86] hover:-translate-y-0.5 transition-all duration-300 shadow-xl shadow-[#4A5D4E]/20 flex items-center justify-center gap-2 whitespace-nowrap"
+                  onClick={() => {}}
+                  className="flex items-center gap-3 bg-black text-white px-5 py-3.5 rounded-2xl hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-black/20"
                 >
-                  Rejoindre la liste <ChevronRight className="w-4 h-4" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-7 h-7 fill-white shrink-0">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-xs opacity-70 font-medium">Télécharger sur l'</div>
+                    <div className="text-base font-bold leading-tight">App Store</div>
+                  </div>
                 </button>
-              </form>
+
+                {/* Google Play */}
+                <button
+                  onClick={() => {}}
+                  className="flex items-center gap-3 bg-[#01875F] text-white px-5 py-3.5 rounded-2xl hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-[#01875F]/30"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-7 h-7 fill-white shrink-0">
+                    <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85A1.5 1.5 0 0 1 3 20.5m13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27M20.16 10.81c.34.27.59.69.59 1.19s-.22.9-.57 1.18l-2.29 1.32-2.5-2.5 2.5-2.5 2.27 1.31M6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z"/>
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-xs opacity-70 font-medium">Disponible sur</div>
+                    <div className="text-base font-bold leading-tight">Google Play</div>
+                  </div>
+                </button>
+              </div>
 
               {/* Preuve sociale */}
               <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 opacity-90">
@@ -105,22 +114,22 @@ export default function Home() {
         </section>
 
         {/* ── BENTO GRID B2C ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+        <div id="features" className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {/* Bento 1 : Harmony Rings */}
-          <div className="lg:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col-reverse md:flex-row items-center gap-10 relative overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <div className="flex-1 z-10 text-center md:text-left">
+          <div className="md:col-span-1 md:row-span-2 bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col items-center gap-6 relative overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div className="text-center z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#8A9A86]/10 text-[#8A9A86] text-xs font-bold uppercase tracking-wider mb-5">Vue d'ensemble</div>
               <h3 className="text-3xl font-extrabold mb-4">Les "Harmony Rings"</h3>
               <p className="text-[#4A5D4E]/70 text-lg font-medium leading-relaxed">
                 Visualisez la santé de votre chien en un coup d'œil. Fermez vos 3 anneaux quotidiens (Nutrition, Activité, Soins) pour lui garantir la meilleure espérance de vie.
               </p>
             </div>
-            <div className="flex-1 flex justify-center z-10">
+            <div className="flex justify-center z-10 mt-auto">
               <img
                 src="/images/badge-bouclier.png"
                 alt="Badge Harmony Rings"
-                className="w-64 h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                className="w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="absolute top-0 right-0 w-80 h-80 bg-[#8A9A86]/5 rounded-full blur-3xl group-hover:bg-[#8A9A86]/10 transition-colors duration-700 pointer-events-none"></div>
@@ -167,29 +176,42 @@ export default function Home() {
           </div>
 
           {/* Bento 4 : SOS & Toxiques */}
-          <div className="lg:col-span-2 bg-[#E27D60] text-white rounded-[2.5rem] p-8 md:p-10 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-10 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <div className="flex-1 z-10 text-center md:text-left">
+          <div className="bg-terracotta text-white rounded-[2.5rem] p-8 md:p-10 shadow-sm relative overflow-hidden flex flex-col gap-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div className="z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider mb-5">Urgence</div>
-              <h3 className="text-3xl font-extrabold mb-4 flex items-center justify-center md:justify-start gap-3">
-                <ShieldAlert className="w-8 h-8" /> SOS & Toxiques
+              <h3 className="text-2xl font-extrabold mb-3 flex items-center gap-3">
+                <ShieldAlert className="w-7 h-7 shrink-0" /> SOS & Toxiques
               </h3>
-              <p className="text-white/90 text-lg font-medium leading-relaxed">
-                L'esprit léger. En cas de doute sur un aliment (encyclopédie toxique intégrée) ou d'urgence absolue, la réponse médicale est à un clic avec guidage GPS vers la clinique de garde.
+              <p className="text-white/90 font-medium leading-relaxed">
+                Encyclopédie toxique intégrée et guidage GPS vers la clinique de garde. La réponse médicale à un clic.
               </p>
             </div>
-            <div className="flex-none z-10 w-full md:w-auto">
-              <button className="w-full md:w-auto bg-white text-[#E27D60] px-8 py-5 rounded-2xl font-extrabold text-lg flex justify-center items-center gap-3 hover:scale-105 transition-transform duration-300 shadow-xl shadow-black/10">
-                <Phone className="w-6 h-6" /> Urgence Vétérinaire
-              </button>
-            </div>
+            <button className="mt-auto w-full bg-white text-terracotta px-6 py-4 rounded-2xl font-extrabold text-base flex justify-center items-center gap-2 hover:scale-105 transition-transform duration-300 shadow-xl shadow-black/10 z-10">
+              <Phone className="w-5 h-5" /> Urgence Vétérinaire
+            </button>
             <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="absolute -top-24 -left-24 w-64 h-64 bg-black/5 rounded-full blur-3xl pointer-events-none"></div>
+          </div>
+
+          {/* Bento 5 : Rappels Intelligents */}
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 relative overflow-hidden flex flex-col items-center md:items-start group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div className="w-16 h-16 rounded-2xl bg-deep-sage/10 flex items-center justify-center mb-6 shrink-0">
+              <Bell className="w-8 h-8 text-deep-sage" />
+            </div>
+            <div className="text-center md:text-left flex-1">
+              <h3 className="text-2xl font-bold mb-3">Rappels Intelligents</h3>
+              <p className="text-[#4A5D4E]/70 font-medium leading-relaxed">Vaccins, vermifuges, contrôles annuels. Napoli anticipe chaque soin et vous prévient avant qu'il ne soit urgent.</p>
+            </div>
+            <div className="flex flex-wrap gap-2 mt-6">
+              <span className="bg-[#4A5D4E]/10 text-[#4A5D4E] text-sm font-bold px-3 py-1.5 rounded-xl">Vaccins ✓</span>
+              <span className="bg-[#8A9A86]/10 text-[#4A5D4E] text-sm font-bold px-3 py-1.5 rounded-xl">Vermifuge ✓</span>
+            </div>
           </div>
 
         </div>
 
         {/* ── MISSION STATEMENT ── */}
-        <section className="mt-20 md:mt-28 bg-[#8A9A86]/5 rounded-[3rem] py-20 px-6 md:px-12 text-center border border-[#8A9A86]/10 shadow-sm">
+        <section id="mission" className="mt-20 md:mt-28 bg-[#8A9A86]/5 rounded-[3rem] py-20 px-6 md:px-12 text-center border border-[#8A9A86]/10 shadow-sm">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-8">
               Pourquoi Napoli ? 🐾
@@ -259,7 +281,7 @@ export default function Home() {
         </section>
 
         {/* ── FAQ B2C ── */}
-        <section className="mt-24 mb-10 max-w-4xl mx-auto">
+        <section id="faq" className="mt-24 mb-10 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-10 text-center">
             Vos questions, nos réponses
           </h2>
@@ -280,6 +302,8 @@ export default function Home() {
         </section>
 
       </main>
+
+      <StickyNav />
 
       {/* ── FOOTER ── */}
       <footer className="bg-[#2C302E] text-white pt-16 pb-8 px-6 md:px-12 mt-10 rounded-t-[3rem] md:rounded-t-[4rem]">
