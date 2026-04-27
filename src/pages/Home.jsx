@@ -4,6 +4,7 @@ import {
   CheckCircle, Star
 } from 'lucide-react';
 import StickyNav from '../components/StickyNav';
+import WaitlistModal from '../components/WaitlistModal';
 
 const testimonials = [
   {
@@ -28,13 +29,19 @@ const testimonials = [
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="min-h-screen bg-cream text-deep-sage font-sans selection:bg-sage selection:text-white overflow-x-hidden flex flex-col">
+
+      <WaitlistModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* ── NAVBAR B2C ── */}
       <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-10 py-4 flex justify-between items-center bg-cream/80 backdrop-blur-xl border-b border-sage/10 shadow-[0_1px_20px_rgb(0,0,0,0.03)]">
@@ -42,7 +49,7 @@ export default function Home() {
           Napoli <span className="text-sage">🐾</span>
         </div>
         <button
-          onClick={() => {}}
+          onClick={openModal}
           className="bg-sage text-white font-bold px-5 py-2.5 rounded-full hover:bg-deep-sage transition-colors duration-300 shadow-md text-sm"
         >
           Télécharger
@@ -63,6 +70,9 @@ export default function Home() {
 
             {/* Colonne gauche */}
             <div className="flex-1 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage/10 text-sage text-xs font-bold uppercase tracking-wider mb-6">
+                Accès VIP Bêta ✨
+              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-deep-sage">
                 L'amour n'est pas une <span className="text-sage">science</span> exacte. Sa santé, si.
               </h1>
@@ -74,7 +84,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0 mb-8">
                 {/* App Store */}
                 <button
-                  onClick={() => {}}
+                  onClick={openModal}
                   className="flex items-center gap-3 bg-black text-white px-5 py-3.5 rounded-2xl hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-black/20"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-7 h-7 fill-white shrink-0">
@@ -88,7 +98,7 @@ export default function Home() {
 
                 {/* Google Play */}
                 <button
-                  onClick={() => {}}
+                  onClick={openModal}
                   className="flex items-center gap-3 bg-[#01875F] text-white px-5 py-3.5 rounded-2xl hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-[#01875F]/30"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-7 h-7 fill-white shrink-0">
@@ -200,7 +210,10 @@ export default function Home() {
                 Encyclopédie toxique intégrée et guidage GPS vers la clinique de garde. La réponse médicale à un clic.
               </p>
             </div>
-            <button className="mt-auto w-full bg-white text-terracotta px-6 py-4 rounded-2xl font-extrabold text-base flex justify-center items-center gap-2 hover:scale-105 transition-transform duration-300 shadow-xl shadow-black/10 z-10">
+            <button
+              onClick={openModal}
+              className="mt-auto w-full bg-white text-terracotta px-6 py-4 rounded-2xl font-extrabold text-base flex justify-center items-center gap-2 hover:scale-105 transition-transform duration-300 shadow-xl shadow-black/10 z-10"
+            >
               <Phone className="w-5 h-5" /> Urgence Vétérinaire
             </button>
             <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -262,7 +275,7 @@ export default function Home() {
         </div>
 
         {/* ── MISSION STATEMENT ── */}
-        <section id="mission" className="mt-20 md:mt-28 bg-sage/5 rounded-[3rem] py-20 px-6 md:px-12 text-center border border-sage/10 shadow-sm">
+        <section id="mission" className="mt-24 md:mt-32 bg-sage/5 rounded-[3rem] py-24 md:py-32 px-6 md:px-12 text-center border border-sage/10 shadow-sm">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-extrabold text-deep-sage mb-8">
               Pourquoi Napoli ? 🐾
@@ -274,7 +287,7 @@ export default function Home() {
         </section>
 
         {/* ── TARIFS B2C ── */}
-        <section className="mt-20 md:mt-28 mb-10 text-center">
+        <section className="mt-24 md:mt-32 mb-10 text-center">
           <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-sage/10 text-sage font-bold text-sm mb-6 uppercase tracking-wider">
             Offert pendant la Bêta
           </div>
@@ -300,7 +313,12 @@ export default function Home() {
                   <span className="font-medium text-deep-sage/80">Annuaire vétérinaire & SOS</span>
                 </li>
               </ul>
-              <button className="w-full bg-gray-100 text-deep-sage py-4 rounded-2xl font-bold border border-black/5 hover:bg-gray-200 transition-colors">Commencer</button>
+              <button
+                onClick={openModal}
+                className="w-full bg-gray-100 text-deep-sage py-4 rounded-2xl font-bold border border-black/5 hover:bg-gray-200 transition-colors"
+              >
+                Commencer
+              </button>
             </div>
 
             {/* Tier Premium */}
@@ -326,13 +344,18 @@ export default function Home() {
                   <span className="font-medium text-deep-sage/80">Trophées & Gamification (Dopamine)</span>
                 </li>
               </ul>
-              <button className="w-full bg-sage text-white py-4 rounded-2xl font-bold hover:bg-deep-sage transition-colors shadow-lg shadow-sage/20">Débloquer Care+</button>
+              <button
+                onClick={openModal}
+                className="w-full bg-sage text-white py-4 rounded-2xl font-bold hover:bg-deep-sage transition-colors shadow-lg shadow-sage/20"
+              >
+                Débloquer Care+
+              </button>
             </div>
           </div>
         </section>
 
         {/* ── FAQ B2C ── */}
-        <section id="faq" className="mt-24 mb-10 max-w-4xl mx-auto">
+        <section id="faq" className="mt-24 md:mt-32 mb-10 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-deep-sage mb-10 text-center">
             Vos questions, nos réponses
           </h2>
@@ -369,6 +392,12 @@ export default function Home() {
             <a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a>
             <a href="mailto:hello@napolicare.com" className="hover:text-white transition-colors">Contact</a>
             <a href="mailto:presse@napolicare.com" className="hover:text-white transition-colors">Espace Presse</a>
+            <a
+              href="mailto:pro@napolicare.com"
+              className="text-taupe hover:text-white transition-colors"
+            >
+              Espace Vétérinaires
+            </a>
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-xs md:text-sm font-medium flex flex-col md:flex-row justify-between items-center gap-4">
