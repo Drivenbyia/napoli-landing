@@ -1,3 +1,4 @@
+// TODO: à nettoyer — Page B2B désactivée suite au pivot B2C (route /pro supprimée de App.jsx)
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {

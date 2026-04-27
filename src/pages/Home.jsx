@@ -1,10 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import {
   ShieldAlert, Phone, Flame, Bell,
-  CheckCircle
+  CheckCircle, Star
 } from 'lucide-react';
 import StickyNav from '../components/StickyNav';
+
+const testimonials = [
+  {
+    name: 'Sophie M.',
+    dog: 'Milo, Labrador 4 ans',
+    text: 'En 3 semaines, Milo a perdu 800g. L\'algorithme nutritionnel est bluffant — bien plus précis que ce que je faisais intuitivement.',
+    avatar: '🐶',
+  },
+  {
+    name: 'Julien R.',
+    dog: 'Luna, Border Collie 2 ans',
+    text: 'L\'alerte toxique m\'a sauvé la mise un dimanche soir. Luna avait avalé une raisin. Direction urgences en 10 minutes.',
+    avatar: '🦮',
+  },
+  {
+    name: 'Clara D.',
+    dog: 'Noisette, Bouledogue 6 ans',
+    text: 'La gamification change tout. Je n\'oublie plus un seul vaccin depuis 4 mois. Noisette a sa série en cours, on ne peut pas s\'arrêter !',
+    avatar: '🐕',
+  },
+];
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -14,25 +34,19 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-[#4A5D4E] font-sans selection:bg-[#8A9A86] selection:text-white overflow-x-hidden flex flex-col">
+    <div className="min-h-screen bg-cream text-deep-sage font-sans selection:bg-sage selection:text-white overflow-x-hidden flex flex-col">
 
-      {/* ── FLOATING HEADER ── */}
-      <header className="fixed top-0 inset-x-0 z-50 px-4 py-4 md:py-6 flex justify-center pointer-events-none">
-        <div className="bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#8A9A86]/10 rounded-full p-1.5 flex items-center pointer-events-auto">
-          <div className="relative flex items-center gap-2 px-5 md:px-6 py-2.5 rounded-full text-sm font-bold text-white bg-[#8A9A86] shadow-md">
-            <span className="text-lg">🐶</span>
-            <span className="hidden sm:inline">Je suis Maître</span>
-            <span className="sm:hidden">Maître</span>
-          </div>
-          <Link
-            to="/pro"
-            className="relative flex items-center gap-2 px-5 md:px-6 py-2.5 rounded-full text-sm font-bold text-[#4A5D4E]/60 hover:text-[#4A5D4E] transition-all duration-300"
-          >
-            <span className="text-lg">🩺</span>
-            <span className="hidden sm:inline">Je suis Vétérinaire</span>
-            <span className="sm:hidden">Vétérinaire</span>
-          </Link>
+      {/* ── NAVBAR B2C ── */}
+      <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-10 py-4 flex justify-between items-center bg-cream/80 backdrop-blur-xl border-b border-sage/10 shadow-[0_1px_20px_rgb(0,0,0,0.03)]">
+        <div className="font-extrabold text-deep-sage text-xl tracking-tight">
+          Napoli <span className="text-sage">🐾</span>
         </div>
+        <button
+          onClick={() => {}}
+          className="bg-sage text-white font-bold px-5 py-2.5 rounded-full hover:bg-deep-sage transition-colors duration-300 shadow-md text-sm"
+        >
+          Télécharger
+        </button>
       </header>
 
       {/* ── MAIN CONTENT ── */}
@@ -43,16 +57,16 @@ export default function Home() {
           className="relative rounded-[3rem] overflow-hidden mb-16 md:mb-24 min-h-[88vh] flex items-center"
           style={{ backgroundImage: "url('/images/bg-abstrait.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
-          <div className="absolute inset-0 bg-[#FAF9F6]/40 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-cream/40 backdrop-blur-[2px]" />
 
           <div className="relative z-10 w-full flex flex-col lg:flex-row items-center gap-10 lg:gap-16 px-8 md:px-12 lg:px-16 py-16">
 
             {/* Colonne gauche */}
             <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-[#4A5D4E]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-deep-sage">
                 L'amour n'est pas une <span className="text-sage">science</span> exacte. Sa santé, si.
               </h1>
-              <p className="text-lg md:text-xl text-[#4A5D4E]/70 mb-8 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-lg md:text-xl text-deep-sage/70 mb-8 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Le premier carnet de santé prédictif qui transforme les recommandations vétérinaires en une routine quotidienne simple, visuelle et motivante.
               </p>
 
@@ -90,13 +104,13 @@ export default function Home() {
               {/* Preuve sociale */}
               <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 opacity-90">
                 <div className="flex -space-x-3">
-                  <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#8A9A86]/20 flex items-center justify-center text-sm shadow-sm">🐶</div>
-                  <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#B5A397]/20 flex items-center justify-center text-sm shadow-sm z-10">🐕</div>
-                  <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#E27D60]/20 flex items-center justify-center text-sm shadow-sm z-20">🦮</div>
-                  <div className="w-10 h-10 rounded-full border-2 border-[#FAF9F6] bg-[#4A5D4E]/10 flex items-center justify-center text-sm shadow-sm z-30">🐩</div>
+                  <div className="w-10 h-10 rounded-full border-2 border-cream bg-sage/20 flex items-center justify-center text-sm shadow-sm">🐶</div>
+                  <div className="w-10 h-10 rounded-full border-2 border-cream bg-taupe/20 flex items-center justify-center text-sm shadow-sm z-10">🐕</div>
+                  <div className="w-10 h-10 rounded-full border-2 border-cream bg-terracotta/20 flex items-center justify-center text-sm shadow-sm z-20">🦮</div>
+                  <div className="w-10 h-10 rounded-full border-2 border-cream bg-deep-sage/10 flex items-center justify-center text-sm shadow-sm z-30">🐩</div>
                 </div>
-                <div className="text-sm font-bold text-[#4A5D4E]/80 text-center sm:text-left">
-                  <span className="text-[#E27D60] tracking-widest text-base">★★★★★</span><br />
+                <div className="text-sm font-bold text-deep-sage/80 text-center sm:text-left">
+                  <span className="text-terracotta tracking-widest text-base">★★★★★</span><br />
                   Rejoint par +500 maîtres passionnés
                 </div>
               </div>
@@ -117,11 +131,11 @@ export default function Home() {
         <div id="features" className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {/* Bento 1 : Harmony Rings */}
-          <div className="md:col-span-1 md:row-span-2 bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col items-center gap-6 relative overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <div className="md:col-span-1 md:row-span-2 bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-sage/10 flex flex-col items-center gap-6 relative overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <div className="text-center z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#8A9A86]/10 text-[#8A9A86] text-xs font-bold uppercase tracking-wider mb-5">Vue d'ensemble</div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage/10 text-sage text-xs font-bold uppercase tracking-wider mb-5">Vue d'ensemble</div>
               <h3 className="text-3xl font-extrabold mb-4">Les "Harmony Rings"</h3>
-              <p className="text-[#4A5D4E]/70 text-lg font-medium leading-relaxed">
+              <p className="text-deep-sage/70 text-lg font-medium leading-relaxed">
                 Visualisez la santé de votre chien en un coup d'œil. Fermez vos 3 anneaux quotidiens (Nutrition, Activité, Soins) pour lui garantir la meilleure espérance de vie.
               </p>
             </div>
@@ -132,11 +146,11 @@ export default function Home() {
                 className="w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#8A9A86]/5 rounded-full blur-3xl group-hover:bg-[#8A9A86]/10 transition-colors duration-700 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-80 h-80 bg-sage/5 rounded-full blur-3xl group-hover:bg-sage/10 transition-colors duration-700 pointer-events-none"></div>
           </div>
 
           {/* Bento 2 : Scan & Nutrition */}
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 relative overflow-hidden flex flex-col items-center md:items-start group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-sage/10 relative overflow-hidden flex flex-col items-center md:items-start group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <img
               src="/images/badge-gamelle.png"
               alt="Badge Nutrition"
@@ -144,17 +158,17 @@ export default function Home() {
             />
             <div className="text-center md:text-left">
               <h3 className="text-2xl font-bold mb-3">Scan & Nutrition</h3>
-              <p className="text-[#4A5D4E]/70 font-medium leading-relaxed mb-6">Fini le doseur approximatif. Scannez, ajustez, et offrez-lui une nutrition sur-mesure digne d'un athlète.</p>
+              <p className="text-deep-sage/70 font-medium leading-relaxed mb-6">Fini le doseur approximatif. Scannez, ajustez, et offrez-lui une nutrition sur-mesure digne d'un athlète.</p>
             </div>
             <div className="flex flex-wrap justify-center md:justify-start gap-2 mt-auto">
-              <span className="bg-[#8A9A86]/10 text-[#4A5D4E] text-sm font-bold px-4 py-2 rounded-xl">Prot 38%</span>
-              <span className="bg-[#B5A397]/10 text-[#4A5D4E] text-sm font-bold px-4 py-2 rounded-xl">Lip 12%</span>
-              <span className="bg-[#FAF9F6] text-[#4A5D4E] text-sm font-bold px-4 py-2 rounded-xl border border-black/5">Gluc 50%</span>
+              <span className="bg-sage/10 text-deep-sage text-sm font-bold px-4 py-2 rounded-xl">Prot 38%</span>
+              <span className="bg-taupe/10 text-deep-sage text-sm font-bold px-4 py-2 rounded-xl">Lip 12%</span>
+              <span className="bg-cream text-deep-sage text-sm font-bold px-4 py-2 rounded-xl border border-black/5">Gluc 50%</span>
             </div>
           </div>
 
           {/* Bento 3 : La Pilule Dopamine */}
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 relative overflow-hidden flex flex-col items-center md:items-start group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-sage/10 relative overflow-hidden flex flex-col items-center md:items-start group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <img
               src="/images/badge-sniffari.png"
               alt="Badge Gamification Sniffari"
@@ -162,14 +176,14 @@ export default function Home() {
             />
             <div className="text-center md:text-left flex-1">
               <h3 className="text-2xl font-bold mb-3">La Pilule Dopamine</h3>
-              <p className="text-[#4A5D4E]/70 font-medium leading-relaxed">Prendre soin de lui devient un jeu. Maintenez votre série d'activités et débloquez des trophées.</p>
+              <p className="text-deep-sage/70 font-medium leading-relaxed">Prendre soin de lui devient un jeu. Maintenez votre série d'activités et débloquez des trophées.</p>
             </div>
-            <div className="bg-[#FAF9F6] rounded-2xl p-4 flex items-center gap-4 mt-8 border border-black/5 w-full group-hover:-translate-y-1 transition-transform duration-300">
-              <div className="w-12 h-12 rounded-full bg-[#E27D60]/10 flex items-center justify-center shrink-0">
-                <Flame className="w-6 h-6 text-[#E27D60]" />
+            <div className="bg-cream rounded-2xl p-4 flex items-center gap-4 mt-8 border border-black/5 w-full group-hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center shrink-0">
+                <Flame className="w-6 h-6 text-terracotta" />
               </div>
               <div>
-                <p className="text-xs text-[#4A5D4E]/50 font-bold uppercase tracking-wider mb-0.5">Série : 12 Jours</p>
+                <p className="text-xs text-deep-sage/50 font-bold uppercase tracking-wider mb-0.5">Série : 12 Jours</p>
                 <p className="font-bold text-[15px]">Expert Sniffari 🏆</p>
               </div>
             </div>
@@ -194,29 +208,66 @@ export default function Home() {
           </div>
 
           {/* Bento 5 : Rappels Intelligents */}
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 relative overflow-hidden flex flex-col items-center md:items-start group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-sage/10 relative overflow-hidden flex flex-col items-center md:items-start group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <div className="w-16 h-16 rounded-2xl bg-deep-sage/10 flex items-center justify-center mb-6 shrink-0">
               <Bell className="w-8 h-8 text-deep-sage" />
             </div>
             <div className="text-center md:text-left flex-1">
               <h3 className="text-2xl font-bold mb-3">Rappels Intelligents</h3>
-              <p className="text-[#4A5D4E]/70 font-medium leading-relaxed">Vaccins, vermifuges, contrôles annuels. Napoli anticipe chaque soin et vous prévient avant qu'il ne soit urgent.</p>
+              <p className="text-deep-sage/70 font-medium leading-relaxed">Vaccins, vermifuges, contrôles annuels. Napoli anticipe chaque soin et vous prévient avant qu'il ne soit urgent.</p>
             </div>
             <div className="flex flex-wrap gap-2 mt-6">
-              <span className="bg-[#4A5D4E]/10 text-[#4A5D4E] text-sm font-bold px-3 py-1.5 rounded-xl">Vaccins ✓</span>
-              <span className="bg-[#8A9A86]/10 text-[#4A5D4E] text-sm font-bold px-3 py-1.5 rounded-xl">Vermifuge ✓</span>
+              <span className="bg-deep-sage/10 text-deep-sage text-sm font-bold px-3 py-1.5 rounded-xl">Vaccins ✓</span>
+              <span className="bg-sage/10 text-deep-sage text-sm font-bold px-3 py-1.5 rounded-xl">Vermifuge ✓</span>
             </div>
+          </div>
+
+          {/* Bento 6 : Témoignages */}
+          <div className="md:col-span-3 bg-deep-sage text-white rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden">
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-bold uppercase tracking-wider mb-8">
+                Ils nous font confiance
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {testimonials.map((t) => (
+                  <div
+                    key={t.name}
+                    className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 flex flex-col gap-4 hover:bg-white/15 transition-colors duration-300"
+                  >
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-sage text-sage" />
+                      ))}
+                    </div>
+                    <p className="text-white/90 font-medium leading-relaxed text-sm flex-1">
+                      "{t.text}"
+                    </p>
+                    <div className="flex items-center gap-3 pt-2 border-t border-white/10">
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-lg">
+                        {t.avatar}
+                      </div>
+                      <div>
+                        <p className="font-bold text-sm">{t.name}</p>
+                        <p className="text-white/50 text-xs font-medium">{t.dog}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="absolute -top-32 -left-32 w-80 h-80 bg-black/10 rounded-full blur-3xl pointer-events-none"></div>
           </div>
 
         </div>
 
         {/* ── MISSION STATEMENT ── */}
-        <section id="mission" className="mt-20 md:mt-28 bg-[#8A9A86]/5 rounded-[3rem] py-20 px-6 md:px-12 text-center border border-[#8A9A86]/10 shadow-sm">
+        <section id="mission" className="mt-20 md:mt-28 bg-sage/5 rounded-[3rem] py-20 px-6 md:px-12 text-center border border-sage/10 shadow-sm">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-deep-sage mb-8">
               Pourquoi Napoli ? 🐾
             </h2>
-            <p className="text-lg md:text-xl text-[#4A5D4E]/80 leading-relaxed font-medium">
+            <p className="text-lg md:text-xl text-deep-sage/80 leading-relaxed font-medium">
               Napoli n'est pas née dans la Silicon Valley. Elle est née d'une frustration : celle de naviguer à l'aveugle avec la santé de notre meilleur ami. Entre les tableaux Excel illisibles et les informations contradictoires sur internet, il manquait un outil. Un outil aussi précis que l'esprit d'un vétérinaire, et aussi simple qu'un jeu d'enfant. Napoli, c'est le chaînon manquant pour leur offrir la vie la plus longue et la plus saine possible.
             </p>
           </div>
@@ -224,79 +275,79 @@ export default function Home() {
 
         {/* ── TARIFS B2C ── */}
         <section className="mt-20 md:mt-28 mb-10 text-center">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-[#8A9A86]/10 text-[#8A9A86] font-bold text-sm mb-6 uppercase tracking-wider">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-sage/10 text-sage font-bold text-sm mb-6 uppercase tracking-wider">
             Offert pendant la Bêta
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-deep-sage mb-12">
             Un investissement transparent.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
             {/* Tier Gratuit */}
-            <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-[#8A9A86]/10 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-sage/10 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
               <h3 className="text-2xl font-bold mb-2">Essentiel</h3>
-              <div className="text-4xl font-extrabold text-[#4A5D4E] mb-6">0€</div>
+              <div className="text-4xl font-extrabold text-deep-sage mb-6">0€</div>
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
-                  <span className="font-medium text-[#4A5D4E]/80">Carnet de santé complet</span>
+                  <CheckCircle className="w-6 h-6 text-sage shrink-0" />
+                  <span className="font-medium text-deep-sage/80">Carnet de santé complet</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
-                  <span className="font-medium text-[#4A5D4E]/80">Suivi de poids régulier</span>
+                  <CheckCircle className="w-6 h-6 text-sage shrink-0" />
+                  <span className="font-medium text-deep-sage/80">Suivi de poids régulier</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
-                  <span className="font-medium text-[#4A5D4E]/80">Annuaire vétérinaire & SOS</span>
+                  <CheckCircle className="w-6 h-6 text-sage shrink-0" />
+                  <span className="font-medium text-deep-sage/80">Annuaire vétérinaire & SOS</span>
                 </li>
               </ul>
-              <button className="w-full bg-gray-100 text-[#4A5D4E] py-4 rounded-2xl font-bold border border-black/5 hover:bg-gray-200 transition-colors">Commencer</button>
+              <button className="w-full bg-gray-100 text-deep-sage py-4 rounded-2xl font-bold border border-black/5 hover:bg-gray-200 transition-colors">Commencer</button>
             </div>
 
             {/* Tier Premium */}
-            <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-md border-2 border-[#8A9A86] flex flex-col relative transform md:-translate-y-4">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#8A9A86] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Le plus choisi</div>
+            <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-md border-2 border-sage flex flex-col relative transform md:-translate-y-4">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-sage text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Le plus choisi</div>
               <h3 className="text-2xl font-bold mb-2">Napoli Care+</h3>
               <div className="mb-2">
                 <span className="text-xl text-gray-400 line-through font-medium mr-3">49,99€ / an</span>
-                <span className="text-4xl font-extrabold text-[#8A9A86]">0€ <span className="text-lg font-bold">aujourd'hui</span></span>
+                <span className="text-4xl font-extrabold text-sage">0€ <span className="text-lg font-bold">aujourd'hui</span></span>
               </div>
-              <p className="text-sm text-[#4A5D4E]/60 font-medium mb-8">Soit ~4€/mois. Le prix d'un café pour allonger l'espérance de vie de son chien.</p>
+              <p className="text-sm text-deep-sage/60 font-medium mb-8">Soit ~4€/mois. Le prix d'un café pour allonger l'espérance de vie de son chien.</p>
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
-                  <span className="font-medium text-[#4A5D4E]/80">Algorithme nutritionnel sur-mesure</span>
+                  <CheckCircle className="w-6 h-6 text-sage shrink-0" />
+                  <span className="font-medium text-deep-sage/80">Algorithme nutritionnel sur-mesure</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
-                  <span className="font-medium text-[#4A5D4E]/80">Scan toxique & ingrédients illimité</span>
+                  <CheckCircle className="w-6 h-6 text-sage shrink-0" />
+                  <span className="font-medium text-deep-sage/80">Scan toxique & ingrédients illimité</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#8A9A86] shrink-0" />
-                  <span className="font-medium text-[#4A5D4E]/80">Trophées & Gamification (Dopamine)</span>
+                  <CheckCircle className="w-6 h-6 text-sage shrink-0" />
+                  <span className="font-medium text-deep-sage/80">Trophées & Gamification (Dopamine)</span>
                 </li>
               </ul>
-              <button className="w-full bg-[#8A9A86] text-white py-4 rounded-2xl font-bold hover:bg-[#4A5D4E] transition-colors shadow-lg shadow-[#8A9A86]/20">Débloquer Care+</button>
+              <button className="w-full bg-sage text-white py-4 rounded-2xl font-bold hover:bg-deep-sage transition-colors shadow-lg shadow-sage/20">Débloquer Care+</button>
             </div>
           </div>
         </section>
 
         {/* ── FAQ B2C ── */}
         <section id="faq" className="mt-24 mb-10 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#4A5D4E] mb-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-deep-sage mb-10 text-center">
             Vos questions, nos réponses
           </h2>
           <div className="space-y-4">
-            <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-[2rem] p-6 md:p-8 shadow-sm">
-              <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">L'application Napoli est-elle gratuite ?</h4>
-              <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Oui ! Le carnet de santé, le suivi de poids et l'annuaire vétérinaire seront toujours gratuits. Pour le Calculateur de macros et la Gamification, nous proposerons plus tard l'abonnement Napoli Care+.</p>
+            <div className="bg-cream border border-sage/20 rounded-[2rem] p-6 md:p-8 shadow-sm">
+              <h4 className="text-lg md:text-xl font-bold text-deep-sage mb-3">L'application Napoli est-elle gratuite ?</h4>
+              <p className="text-deep-sage/80 font-medium leading-relaxed">Oui ! Le carnet de santé, le suivi de poids et l'annuaire vétérinaire seront toujours gratuits. Pour le Calculateur de macros et la Gamification, nous proposerons plus tard l'abonnement Napoli Care+.</p>
             </div>
-            <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-[2rem] p-6 md:p-8 shadow-sm">
-              <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">Mon vétérinaire n'utilise pas Napoli. Puis-je quand même l'utiliser ?</h4>
-              <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Absolument. L'application est autonome. Vous pourrez générer un "Rapport de Santé" PDF en un clic pour votre vétérinaire lors de vos consultations.</p>
+            <div className="bg-cream border border-sage/20 rounded-[2rem] p-6 md:p-8 shadow-sm">
+              <h4 className="text-lg md:text-xl font-bold text-deep-sage mb-3">Mon vétérinaire n'utilise pas Napoli. Puis-je quand même l'utiliser ?</h4>
+              <p className="text-deep-sage/80 font-medium leading-relaxed">Absolument. L'application est autonome. Vous pourrez générer un "Rapport de Santé" PDF en un clic pour votre vétérinaire lors de vos consultations.</p>
             </div>
-            <div className="bg-[#FAF9F6] border border-[#8A9A86]/20 rounded-[2rem] p-6 md:p-8 shadow-sm">
-              <h4 className="text-lg md:text-xl font-bold text-[#4A5D4E] mb-3">Comment calculez-vous les rations et calories ?</h4>
-              <p className="text-[#4A5D4E]/80 font-medium leading-relaxed">Nos algorithmes utilisent les directives cliniques strictes (NRC) et se basent sur les données d'OpenFoodFacts, parfaitement ajustés selon l'âge, la race et l'activité de votre chien.</p>
+            <div className="bg-cream border border-sage/20 rounded-[2rem] p-6 md:p-8 shadow-sm">
+              <h4 className="text-lg md:text-xl font-bold text-deep-sage mb-3">Comment calculez-vous les rations et calories ?</h4>
+              <p className="text-deep-sage/80 font-medium leading-relaxed">Nos algorithmes utilisent les directives cliniques strictes (NRC) et se basent sur les données d'OpenFoodFacts, parfaitement ajustés selon l'âge, la race et l'activité de votre chien.</p>
             </div>
           </div>
         </section>
