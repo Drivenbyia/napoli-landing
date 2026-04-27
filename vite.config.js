@@ -8,6 +8,11 @@ export default defineConfig({
     // Dossier de sortie standard pour Vite, Netlify pointera ici
     outDir: 'dist',
     emptyOutDir: true,
-  }
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test-setup.js',
+  },
 });
 
