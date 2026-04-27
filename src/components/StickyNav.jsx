@@ -6,9 +6,11 @@ export default function StickyNav() {
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-4xl bg-white/90 backdrop-blur-md rounded-full shadow-lg flex justify-between items-center px-6 py-3 z-50">
 
       {/* Logo Napoli */}
-      <div className="font-extrabold text-deep-sage text-lg shrink-0">
-        Napoli 🐾
-      </div>
+      <img
+        src="/images/monogram_napoli.svg"
+        alt="Napoli, l'application santé prédictive pour chiens"
+        className="h-10 w-auto shrink-0"
+      />
 
       {/* Menu icons — cachés sur xs */}
       <nav className="hidden sm:flex items-center gap-1 md:gap-2">

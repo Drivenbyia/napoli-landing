@@ -6,8 +6,12 @@ export default function MentionsLegales() {
 
       {/* ── NAVBAR ── */}
       <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-10 py-4 flex justify-between items-center bg-cream/80 backdrop-blur-xl border-b border-sage/10 shadow-[0_1px_20px_rgb(0,0,0,0.03)]">
-        <a href="/" className="font-extrabold text-deep-sage text-xl tracking-tight hover:text-sage transition-colors">
-          Napoli <span className="text-sage">🐾</span>
+        <a href="/">
+          <img
+            src="/images/monogram_napoli.svg"
+            alt="Napoli, l'application santé prédictive pour chiens"
+            className="h-10 w-auto"
+          />
         </a>
         <a
           href="/"
@@ -96,7 +100,11 @@ export default function MentionsLegales() {
       <footer className="bg-[#2C302E] text-white pt-16 pb-8 px-6 md:px-12 rounded-t-[3rem] md:rounded-t-[4rem]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-center md:text-left">
           <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Napoli 🐾</h2>
+            <img
+              src="/images/logo_horizontal.svg"
+              alt="Napoli"
+              className="h-14 w-auto mb-3 brightness-0 invert"
+            />
             <p className="text-white/60 text-sm md:text-base font-medium max-w-xs">
               L'application de santé prédictive qui prolonge leur espérance de vie.
             </p>
