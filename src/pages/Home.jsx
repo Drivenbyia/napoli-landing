@@ -399,7 +399,9 @@ export default function Home() {
             <a href="mailto:hello@napolicare.com" className="hover:text-white transition-colors">Contact</a>
             <a href="mailto:presse@napolicare.com" className="hover:text-white transition-colors">Espace Presse</a>
             <a
-              href="mailto:pro@napolicare.com"
+              href="https://pro.napolicare.com/#/landing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-taupe hover:text-white transition-colors"
             >
               Espace Vétérinaires
